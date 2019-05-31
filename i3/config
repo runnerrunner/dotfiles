@@ -15,7 +15,7 @@ exec --no-startup-id wal -R
 exec_always setxkbmap se
 exec_always --no-startup-id compton
 exec xset b 0
-
+exec_always --no-startup-id flashfocus
 set $mod Mod4
 
 for_window [class="^.*"] border pixel 0
