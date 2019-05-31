@@ -1,10 +1,11 @@
 URxvt.internalBorder: 25
-URxvt.font: xft:monospace:size=12
+URxvt.font: xft:SourceCodePro-Medium:pixelsize=18
 URxvt.scrollBar: false
 
 URxvt.depth: 32
-URxvt.background: [50]#2E3440
-
+URxvt.background: [60]#2E3440
+URxvt.cursorBlink: true
+Urxvt.cursorUnderline: 1
 !! Disable the stupid ctrl+shift 'feature'
 URxvt.iso14755:            false
 URxvt.iso14755_52: false
@@ -36,7 +37,7 @@ URxvt.iso14755_52: false
 
 *.foreground:   nord4
 *.cursorColor:  nord4
-*fading: 35
+! *fading: 35
 *fadeColor: nord3
 
 *.color0: nord1
