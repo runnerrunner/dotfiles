@@ -11,8 +11,9 @@
 
 exec --no-startup-id xrandr --output eDP1 --mode 1920x1080
 exec --no-startup-id sh ~/.fehbg
+exec --no-startup-id wal -R
 exec_always setxkbmap se
-exec --no-startup-id compton
+exec_always --no-startup-id compton
 exec xset b 0
 
 set $mod Mod4
@@ -192,7 +193,8 @@ bar {
         binding_mode       #2f343a #900000 #ffffff
     }
 	
-	font pango:monospace 10
+#	font pango:monospace 10
+	font pango:SourceCodePro-medium 10
 	position top
         status_command i3status
 }
