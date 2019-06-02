@@ -1,0 +1,144 @@
+[colors]
+background = ${xrdb:color0:#ccffffff}
+foreground = ${xrdb:color7:#00000000}
+foreground-alt = ${xrdb:color7:#222}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color3:#222}
+
+[bar/mybar]
+monitor = eDP1
+tray-position = right
+tray-padding = 2
+tray-transparent = true
+true tray-backrgound = ${colors.background}
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+; font-N = <fontconfig pattern>;<vertical offset>
+font-0 = "SourceCodePro-Medium:pixelsize=13"
+font-1 = "DejaVu Sans:size=11:weight=bold"
+font-2 = "Font Awesome 5 Free-Solid-900:size=5"
+
+padding = 1
+module-margin = 1
+
+modules-left = i3
+modules-center =
+modules-right = wireless-network battery volume backlight time
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wm-wsprev
+
+[module/backlight]
+type = internal/xbacklight
+output = eDP1
+enable-scroll = true
+format = <label>
+label = %percentage%%
+
+
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+strip-wsnumbers = true
+index-sort = true
+enable-click = false
+enable-scroll = true
+wrapping-scroll = false
+reverse-scroll = true
+format = <label-state> <label-mode>
+label-mode = %mode%
+label-mode-padding = 1
+label-mode-background = #e60053
+label-focused = %index%
+label-focused-foreground = #ffffff
+label-focused-background = #3f3f3f
+label-focused-underline = #fba922
+label-focused-padding = 1
+label-unfocused = %index%
+label-unfocused-padding = 1
+label-visible = %index%
+label-visible-underline = #555555
+label-visible-padding = 1
+label-urgent = %index%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-padding = 1
+;label-separator = |
+label-separator-padding = 0
+label-separator-foreground = #ffb52a
+
+[module/volume]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = true
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
+
+format-volume = <label-volume>
+label-muted = 
+label-muted-foreground = #666
+
+label-volume =  %percentage%
+
+; Only applies if <ramp-volume> is used
+;ramp-volume-0 = 
+;ramp-volume-1 = 
+;ramp-volume-2 = 
+
+[module/time]
+type = internal/date
+interval = 5.0
+time = %H:%M:%S
+date-alt = %A, %d %B %Y
+time-alt = %A, %d %B %Y
+format =  <label>
+label = %time%
+
+[module/wireless-network]
+type = internal/network
+interface = wlp0s20f3
+interval = 3.0
+accumulate-stats = true
+unknown-as-up = true
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-connected =  %signal%%
+label-connected-foreground = 
+label-disconnected = 
+label-disconnected-foreground = 
+
+
+[module/battery]
+type = internal/battery
+
+format-charging = <label-charging>
+format-discharging = <label-discharging>
+label-charging =  %percentage%%
+label-discharging =  %percentage%%
+; This is useful in case the battery never reports 100% charge
+full-at = 100
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = ADP1
+
+; If an inotify event haven't been reported in this many
+; seconds, manually poll for new values.
+;
+; Needed as a fallback for systems that don't report events
+; on sysfs/procfs.
+;
+; Disable polling by setting the interval to 0.
+;
+; Default: 5
+poll-interval = 5
